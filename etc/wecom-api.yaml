@@ -1,0 +1,5 @@
+Name: wecom-api
+Host: 0.0.0.0
+Port: 8888
+Timeout: 5000
+DataSource: user:password@(127.0.0.1:3306)/wecom-zero?charset=utf8mb4&parseTime=True&loc=Local

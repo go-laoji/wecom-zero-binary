@@ -1,0 +1,20 @@
+server {
+    server_name yourdomain.com; ＃替换为自己的域名
+    listen 80;
+
+    listen 443 ssl;　# 如果不配置https，可将　5－7行注释或者是删除
+    ssl_certificate  /cert.pem; ＃修改为ssl证书位置
+    ssl_certificate_key  /key.pem;　#修改为ssl证书key位置
+
+    location ~/*.txt {
+        root /txtpath; # 修改为可信域名验证文件存放位置
+    }
+
+    location /wecom/ {
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Scheme $scheme;
+        proxy_pass http://127.0.0.1:8888; #端口号与etc/wecom-api.yaml里的Port配置相同
+    }
+
+}
